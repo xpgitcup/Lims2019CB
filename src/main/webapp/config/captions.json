@@ -1,0 +1,23 @@
+[
+  {
+    "name": "main",
+    "title": "实验室数据管理系统2019CA",
+    "logo": "cuplogoA.png",
+    "href": "www.cup.edu.cn",
+    "description": "这里是中国石油大学（北京）的简介"
+  },
+  {
+    "name": "微博",
+    "title": "微博",
+    "logo": "微博.png",
+    "href": "www.cup.edu.cn",
+    "description": "这里是微博的简介"
+  },
+  {
+    "name": "微信",
+    "title": "微信",
+    "logo": "微信.png",
+    "href": "www.cup.edu.cn",
+    "description": "这里是微信的简介"
+  }
+]
