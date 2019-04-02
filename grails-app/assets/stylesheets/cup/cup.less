@@ -1,21 +1,8 @@
 body {
   //先定义背景
-  background: url("../../../cn/edu/cup/img_bg_haven.jpg"); //这个是正确的
+  background: url("../cup/img_bg_haven.jpg"); //这个是正确的
   background-position: center;
   background-size: cover; /*这个是正确的*/
-
-  //轮播图片的居中...
-  .carousel-inner {
-    .item {
-      img {
-        display: block;
-        line-height: 1;
-        background: yellow;
-        /*width: 100%;  /* 20170523 李晓平增加*/
-        margin: auto;
-      }
-    }
-  }
 
   //绘图
   .topoCanvas {
@@ -23,7 +10,12 @@ body {
   }
 
   .applicationHeaderStatus {
-    color: white;
+    float: right;
+    position: relative;
+    margin-top: auto;
+    a{
+      color: white;
+    }
   }
 
   //标题字体
@@ -31,11 +23,8 @@ body {
     display: inline-block;
     vertical-align: text-top;
     padding-top: 0px;
-
-    a {
-      font-size: 3.1em;
-      color: white;
-    }
+    font-size: 3.1em;
+    color: white;
   }
 
   //首页的提示信息

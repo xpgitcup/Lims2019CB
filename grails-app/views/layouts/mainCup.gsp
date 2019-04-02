@@ -11,13 +11,42 @@
 
     <asset:stylesheet src="application.css"/>
 
+    <!-- 开始中国石油大学（北京）的设置 -->
+    <asset:stylesheet src="cup/cup.css"/>
+    <!-- 中国石油大学（北京）的设置结束 -->
+
     <g:layoutHead/>
 </head>
 
 <body>
 
+<div class="container-fluid">
+    <!-- 这里是图标 -->
+    <a class="navbar-brand" href="${cn.edu.cup.basic.Caption.findByName("main").href}">
+        <asset:image src="cup/${cn.edu.cup.basic.Caption.findByName("main").logo}" alt="本程序的 Logo"/>
+    </a>
+
+    <!-- 这里是程序的标题 -->
+    <div class="applicationTitle">
+        ${cn.edu.cup.basic.Caption.findByName("main")?.title}
+    </div>
+
+    <div class="applicationHeaderStatus">
+        <ul>
+            <g:if test="${session.systemUser}">
+            </g:if>
+            <g:else>
+                <li>
+                    <a href="${createLink(uri: '/home/loginUI')}">去登录</a>
+                </li>
+            </g:else>
+        </ul>
+    </div>
+
+</div>
+
 <nav class="navbar navbar-expand-lg navbar-dark navbar-static-top" role="navigation">
-    <a class="navbar-brand" href="/#"><asset:image src="grails.svg" alt="Grails Logo"/></a>
+
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
             aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -46,27 +75,6 @@
 
     </div>
 
-    <div class="col">
-        <a href="http://docs.grails.org" target="_blank">
-            <asset:image src="documentation.svg" alt="Grails Documentation" class="float-left"/>
-        </a>
-        <strong class="centered"><a href="http://docs.grails.org" target="_blank">Documentation</a></strong>
-
-        <p>Ready to dig in? You can find in-depth documentation for all the features of Grails in the <a
-                href="http://docs.grails.org" target="_blank">User Guide</a>.</p>
-
-    </div>
-
-    <div class="col">
-        <a href="https://grails-slack.cfapps.io" target="_blank">
-            <asset:image src="slack.svg" alt="Grails Slack" class="float-left"/>
-        </a>
-        <strong class="centered"><a href="https://grails-slack.cfapps.io" target="_blank">Join the Community</a>
-        </strong>
-
-        <p>Get feedback and share your experience with other Grails developers in the community <a
-                href="https://grails-slack.cfapps.io" target="_blank">Slack channel</a>.</p>
-    </div>
 </div>
 
 

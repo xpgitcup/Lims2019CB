@@ -7,6 +7,20 @@
     "description": "这里是中国石油大学（北京）的简介"
   },
   {
+    "name": "main详细介绍",
+    "title": "实验室数据管理系统",
+    "logo": "cup_big.png",
+    "href": "www.cup.edu.cn",
+    "description": "这里应该是中国石油大学的详细介绍"
+  },
+  {
+    "name": "main多相流实验室",
+    "title": "实验室数据管理系统",
+    "logo": "cup_big.png",
+    "href": "www.cup.edu.cn",
+    "description": "这里应该是中国石油大学的详细介绍"
+  },
+  {
     "name": "微博",
     "title": "微博",
     "logo": "微博.png",
