@@ -31,35 +31,32 @@
         ${cn.edu.cup.basic.Caption.findByName("main")?.title}
     </div>
 
-    <div class="applicationHeaderStatus">
+    <div class="applicationNav" id="navbarContent">
         <ul>
-            <g:if test="${session.systemUser}">
-            </g:if>
-            <g:else>
-                <li>
-                    <a href="${createLink(uri: '/home/loginUI')}">去登录</a>
-                </li>
-            </g:else>
+            <!--g:pageProperty name="page.nav"/-->
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>
+                <div class="applicationHeaderStatus">
+                    <ul>
+                        <g:if test="${session.systemUser}">
+                        </g:if>
+                        <g:else>
+                            <li>
+                                <a href="${createLink(uri: '/home/loginUI')}">去登录</a>
+                            </li>
+                        </g:else>
+                    </ul>
+                </div>
+            </li>
         </ul>
+
     </div>
 
 </div>
 
-<nav class="navbar navbar-expand-lg navbar-dark navbar-static-top" role="navigation">
-
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent"
-            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <!--div class="collapse navbar-collapse" aria-expanded="false" style="height: 0.8px;" id="navbarContent"-->
-    <div class="collapse navbar-collapse" aria-expanded="false" style="height: 0.8px;" id="navbarContent">
-        <ul class="nav navbar-nav ml-auto">
-            <g:pageProperty name="page.nav"/>
-        </ul>
-    </div>
-
-</nav>
 
 <g:layoutBody/>
 

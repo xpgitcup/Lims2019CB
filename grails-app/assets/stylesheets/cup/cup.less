@@ -9,15 +9,6 @@ body {
     background-color: #0000FF;
   }
 
-  .applicationHeaderStatus {
-    float: right;
-    position: relative;
-    margin-top: auto;
-    a{
-      color: white;
-    }
-  }
-
   //标题字体
   .applicationTitle {
     display: inline-block;
@@ -26,6 +17,51 @@ body {
     font-size: 3.1em;
     color: white;
   }
+
+  .applicationNav {
+    float: right;
+    position: relative;
+    margin: 0 auto;
+    padding-top: 1%;
+
+    ul {
+      list-style: none; /* 去掉ul前面的符号 */
+      margin: 0px; /* 与外界元素的距离为0 */
+      padding: 0px; /* 与内部元素的距离为0 */
+      width: auto; /* 宽度根据元素内容调整 */
+      text-align: center;
+
+      li {
+        float: left; /* 向左漂移，将竖排变为横排 */
+        padding-left: 5px;
+        color: yellow;
+
+        a {
+          background-color: #465c71; /* 背景色 */
+          border: 1px #4e667d solid; /* 边框 */
+          color: yellow; /* 文字颜色 */
+          display: block; /* 此元素将显示为块级元素，此元素前后会带有换行符 */
+          line-height: 1.35em; /* 行高 */
+          padding: 4px 20px; /* 内部填充的距离 */
+          text-decoration: none; /* 不显示超链接下划线 */
+          white-space: nowrap; /* 对于文本内的空白处，不会换行，文本会在在同一行上继续，直到遇到 <br> 标签为止。 */
+        }
+
+        .applicationHeaderStatus {
+          float: right;
+
+          ul {
+
+            a {
+              color: white;
+            }
+          }
+        }
+
+      }
+    }
+  }
+
 
   //首页的提示信息
   .home-message {
@@ -99,7 +135,7 @@ body {
 
   .fileInput {
     clear: right;
-    float:left;
+    float: left;
   }
 }
 
