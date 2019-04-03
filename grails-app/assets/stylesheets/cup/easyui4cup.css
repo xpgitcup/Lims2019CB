@@ -1,0 +1,58 @@
+body {
+  background: url("../cup/img_bg_haven.jpg");
+  background-position: center;
+  background-size: cover;
+  /*这个是正确的*/
+  /*这是最左上角的图标LOG*/
+  /*这是页眉，右侧，状态栏*/
+  /*主显示区*/
+}
+body .header-EasyUI {
+  background: transparent;
+  float: left;
+}
+body .applicationTitle {
+  display: inline-block;
+  vertical-align: text-top;
+  padding-top: 20px;
+  font-size: 2.1em;
+  color: white;
+}
+body .applicationHeaderStatus {
+  float: right;
+  padding-right: 10px;
+}
+body .applicationHeaderStatus ul {
+  list-style-type: none;
+}
+body .applicationHeaderStatus ul a {
+  color: white;
+}
+body .mainContent {
+  background: transparent;
+}
+body .applicationFooter {
+  zoom: 1;
+  background: #5cec97;
+  color: white;
+}
+body .applicationFooterLeft {
+  float: left;
+  padding: 5px;
+}
+body .applicationFooterRight {
+  float: right;
+  padding: 5px;
+}
+body .applicationFooterRight ul {
+  list-style-type: none;
+  overflow: hidden;
+  padding-left: 10px;
+}
+body .applicationFooterRight ul li {
+  display: block;
+  float: right;
+  margin-right: 0.5em;
+  padding: 0;
+}
+/*# sourceMappingURL=easyui4cup.css.map */
