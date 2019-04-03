@@ -11,36 +11,9 @@
     <!-- 界面设置开始 -->
     <asset:stylesheet src="application.css"/>
 
-    <!--引入easyui的相关内容-->
-    <asset:stylesheet src="easyui/themes/default/easyui.css"/>
-    <asset:stylesheet src="easyui/themes/icon.css"/>
-    <asset:stylesheet src="easyui/themes/color.css"/>
-    <!--asset:stylesheet src="easyui/themes/bootstrap/easyui.css"/-->
-    <!--引入树形结构显示组件-->
-    <asset:stylesheet src="bootstrap-treeview/bootstrap-treeview.min.css"/>
-    <!--引入jqpagination的样式-->
-    <!--asset:stylesheet src="jqpagination/jqpagination.css"/-->
-
     <!--引入CUP的相关内容-->
-    <!--asset:stylesheet src="cn/edu/cup/cupEasyUi.css"/-->
-    <asset:stylesheet src="cn/edu/cup/cup.css"/>
-
-    <!--JS加载-->
-    <asset:javascript src="jquery-2.2.0.min.js"/>
-
-    <asset:javascript src="easyui/jquery.easyui.min.js"/>
-
-    <asset:javascript src="bootstrap.js"/>
-    <asset:javascript src="bootstrap-treeview/bootstrap-treeview.min.js"/>
-    <asset:javascript src="jquery/jquery.cookie.js"/>
-    <!--引入jqpagination-->
-    <!--asset:javascript src="jqpagination/jquery.jqpagination.min.js"/-->
-
-    <!--用户自定义的-->
-    <asset:javascript src="cn/edu/cup/common/common.js"/>
-
-    <!-- 这个不用包含， 这是用户界面所需要的 -->
-    <!--asset:javascript src="cn/edu/cup/common/mainEasyUI.js"/-->
+    <asset:stylesheet src="cup/cup.css"/>
+    <asset:stylesheet src="cup/welcome.css"/>
 
     <!-- 界面设置结束 -->
 
@@ -52,20 +25,18 @@
 
     %{--导航栏kq--}%
     <!--div class="navbar navbar-default navbar-static-top" role="navigation"-->
-    <div class="navbar navbar-static-top" role="navigation">
+    <div class="navbar" role="navigation">
 
         %{--标题--}%
         <span class="navbar-header">
             <a href="${createLink(uri: '/')}">
-                <asset:image src="cn/edu/cup/${cn.edu.cup.basic.Caption.findByName("main")?.logo}"
+                <asset:image src="cup/${cn.edu.cup.basic.Caption.findByName("main")?.logo}"
                              class="img-rounded"/>
             </a>
         </span>
         <span class="applicationTitle">
             <g:if test="${cn.edu.cup.basic.Caption.findByName("main")?.title}">
-                <a href="${createLink(uri: '/home')}">
-                    ${cn.edu.cup.basic.Caption.findByName("main")?.title}
-                </a>
+                ${cn.edu.cup.basic.Caption.findByName("main")?.title}
             </g:if>
             <g:else>
                 替换成应用程序的标题
@@ -81,14 +52,6 @@
     </div>
     %{--页面正文--}%
     <g:layoutBody/>
-</div>
-
-%{--页脚--}%
-<div class="footer" role="contentinfo">
-</div>
-
-<div id="spinner" class="spinner" style="display:none;">
-    <g:message code="spinner.alt" default="Loading&hellip;"/>
 </div>
 
 <!--asset:javascript src="application.js"/-->

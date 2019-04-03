@@ -1,6 +1,7 @@
 package cn.edu.cup.init
 
 import cn.edu.cup.basic.Caption
+import cn.edu.cup.system.SystemMenu
 import grails.gorm.transactions.Transactional
 
 import javax.servlet.ServletContext
@@ -48,10 +49,19 @@ class InitService {
 
         // 处理应用程序名称、图标等信息
         def captionsFileName = "${webRootDir}/config/captions.json"
-        if (captionService.count()<1) {
+        if (captionService.count() < 1) {
             def captions = commonService.importObjectListFromJsonFileName(captionsFileName, Caption.class)
-            captions.each { e->
+            captions.each { e ->
                 captionService.save(e)
+            }
+        }
+
+        // 处理菜单的设置
+        def systemMenuFileName = "${webRootDir}/config/systemMenu.json"
+        if (systemMenuService.count() < 1) {
+            def menus = commonService.importTreeFromJsonFileName(systemMenuFileName, SystemMenu.class, "menuItems")
+            menus.each { e ->
+                systemMenuService.save(e)
             }
         }
     }

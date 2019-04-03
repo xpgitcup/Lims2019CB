@@ -21,11 +21,11 @@
     "description": "这里应该是中国石油大学的详细介绍"
   },
   {
-    "name": "微博",
-    "title": "微博",
-    "logo": "微博.png",
+    "name": "中石化",
+    "title": "中石化",
+    "logo": "logo_cnooc.png",
     "href": "www.cup.edu.cn",
-    "description": "这里是微博的简介"
+    "description": "这里是中石化的简介"
   },
   {
     "name": "微信",
