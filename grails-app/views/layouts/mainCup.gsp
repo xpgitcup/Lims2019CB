@@ -12,7 +12,7 @@
     <asset:stylesheet src="application.css"/>
 
     <!-- 开始中国石油大学（北京）的设置 -->
-    <asset:stylesheet src="cup/cup.css"/>
+    <asset:stylesheet src="cup/cupEasyUi.css"/>
     <!-- 中国石油大学（北京）的设置结束 -->
 
     <g:layoutHead/>
