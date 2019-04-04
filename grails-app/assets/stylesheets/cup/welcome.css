@@ -6,14 +6,31 @@ body {
 }
 body .welcomePanel {
   background: url("../cup/login_001.jpg") no-repeat;
-  background-size: 60%;
-  width: auto;
+  background-size: 100%;
+  justify-content: center;
+  width: 699px;
   height: 408px;
   margin: auto;
-  margin-top: 15%;
-  margin-left: auto;
-  padding-top: 10px;
-  border-radius: 6px;
+  margin-top: 20%;
   border: 1px;
+}
+body .welcomePanel .login_title {
+  padding-left: 120px;
+  padding-top: 45px;
+  font-size: 2.1em;
+  width: 800px;
+}
+body .welcomePanel .welcomeForm {
+  padding-top: 62px;
+  padding-left: 145px;
+}
+body .welcomePanel .welcomeForm ul {
+  list-style: none;
+}
+body .welcomePanel .welcomeForm ul li {
+  padding: 12px;
+}
+body .welcomePanel .welcomeForm .login-button {
+  width: 100px;
 }
 /*# sourceMappingURL=welcome.css.map */

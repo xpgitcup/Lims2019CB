@@ -57,6 +57,7 @@
             <ul>
             <!-- 显示当前用户 -->
                 <g:if test="${session.systemUser}">
+                    <li>当前用户：${session.systemUser}</li>
                 </g:if>
                 <g:else>
                     <li><a href="${createLink(uri: '/home/loginUI')}">去登录</a></li>

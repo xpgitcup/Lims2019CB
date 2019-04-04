@@ -1,7 +1,11 @@
 package cn.edu.cup.init
 
 import cn.edu.cup.basic.Caption
+import cn.edu.cup.basic.PersonTitle
+import cn.edu.cup.basic.Teacher
+import cn.edu.cup.system.SystemAttribute
 import cn.edu.cup.system.SystemMenu
+import cn.edu.cup.system.SystemUser
 import grails.gorm.transactions.Transactional
 
 import javax.servlet.ServletContext
@@ -11,8 +15,13 @@ class InitService {
     def grailsApplication
     def dataSource
     def systemMenuService
+    def systemUserService
     def captionService
     def commonService
+    def personTitleService
+    def teacherService
+    def systemCommonService
+    def systemAttributeService
 
     /**
      * 初始化代码__开发环境下的初始化代码
@@ -62,6 +71,35 @@ class InitService {
             def menus = commonService.importTreeFromJsonFileName(systemMenuFileName, SystemMenu.class, "menuItems")
             menus.each { e ->
                 systemMenuService.save(e)
+            }
+        }
+
+        // 处理人员身份
+        def personTitleFileName = "${webRootDir}/config/personTitle.json"
+        if (personTitleService.count() < 1) {
+            def personTitels = commonService.importTreeFromJsonFileName(personTitleFileName, PersonTitle.class, "subTitels")
+            personTitels.each { e ->
+                personTitleService.save(e)
+            }
+        }
+
+        // 处理系统属性
+        def attributeFileName = "${webRootDir}/config/systemAttribute.json"
+        if (systemAttributeService.count() < 1) {
+            def attributes = commonService.importObjectListFromJsonFileName(attributeFileName, SystemAttribute.class)
+            attributes.each { e ->
+                systemAttributeService.save(e)
+            }
+        }
+
+        // 处理人员
+        def teacherFileName = "${webRootDir}/config/teacher.json"
+        if (teacherService.count() < 1) {
+            def teachers = commonService.importObjectListFromJsonFileName(teacherFileName, Teacher.class)
+            teachers.each { e ->
+                //println("${e}")
+                teacherService.save(e)
+                systemCommonService.addPersonToUser(e)
             }
         }
     }

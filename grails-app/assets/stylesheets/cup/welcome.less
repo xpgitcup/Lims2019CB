@@ -1,23 +1,44 @@
 body {
-  //先定义背景
-  background: url("../cup/img_bg_haven.jpg"); //这个是正确的
-  background-position: center;
-  background-size: cover; /*这个是正确的*/
+    //先定义背景
+    background: url("../cup/img_bg_haven.jpg"); //这个是正确的
+    background-position: center;
+    background-size: cover; /*这个是正确的*/
 
-  .welcomePanel {
-    background: url("../cup/login_001.jpg") no-repeat;
-    background-size: 60%;
-    width: auto;
-    height: 408px;
-    margin: auto;
-    margin-top: 15%;
-    margin-left: auto;
-    padding-top: 10px;
-    border-radius: 6px;
-    border: 1px;
+    .welcomePanel {
+        background: url("../cup/login_001.jpg") no-repeat;
+        background-size: 100%;
 
-    .login_title {
+        justify-content: center;
+        //align-items:center;
+        //display: -webkit-flex; //这个影响文字的位置
+
+        width: 699px;
+        height: 408px;
+        margin: auto;
+        margin-top: 20%;
+        border: 1px;
+
+        .login_title {
+            padding-left: 120px;
+            padding-top: 45px;
+            font-size: 2.1em;
+            width: 800px;
+        }
+
+        .welcomeForm {
+            padding-top: 62px;
+            padding-left: 145px;
+            ul {
+                list-style: none;
+                li {
+                    padding: 12px;
+                }
+            }
+
+            .login-button {
+                width: 100px;
+            }
+        }
 
     }
-  }
 }

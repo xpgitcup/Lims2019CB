@@ -1,16 +1,35 @@
 package cn.edu.cup.basic
 
-class Person {
+import cn.edu.cup.common.DataExchangeInterface
+
+class Person implements DataExchangeInterface {
 
     String code
     String name
 
+    static belongsTo = [personTitle: PersonTitle]
+
     static constraints = {
         code(unique: true)
-        name(nullable: false)
+        name()
     }
 
     String toString() {
-        return "${name}"
+        return "${code}.${name}"
+    }
+
+    @Override
+    List<String> dataSheetTitles() {
+        return null
+    }
+
+    @Override
+    Map importFromDataSheet(Object dataSheet) {
+        return null
+    }
+
+    @Override
+    List exportToDataSheet() {
+        return null
     }
 }

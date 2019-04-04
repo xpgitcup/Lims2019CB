@@ -64,6 +64,10 @@
     <section class="row colset-2-its">
         <h1>${cn.edu.cup.basic.Caption.findByName("main详细介绍")?.title}</h1>
 
+        <g:if test="${flash}">
+            <h1>${flash.message}</h1>
+        </g:if>
+
         <p>
             ${cn.edu.cup.basic.Caption.findByName("main详细介绍")?.description}
         </p>
@@ -71,13 +75,14 @@
         <div id="controllers" role="navigation">
             <h2>Available Controllers:</h2>
             <ul>
-                <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName }}">
+                <g:each var="c" in="${grailsApplication.controllerClasses.sort { it.fullName } }">
                     <li class="controller">
                         <g:link controller="${c.logicalPropertyName}">${c.fullName}</g:link>
                     </li>
                 </g:each>
             </ul>
         </div>
+
     </section>
 </div>
 

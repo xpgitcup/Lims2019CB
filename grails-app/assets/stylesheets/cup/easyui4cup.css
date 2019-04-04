@@ -21,11 +21,15 @@ body .applicationTitle {
 body .applicationHeaderStatus {
   float: right;
   padding-right: 10px;
+  padding-top: 20px;
 }
 body .applicationHeaderStatus ul {
   list-style-type: none;
 }
-body .applicationHeaderStatus ul a {
+body .applicationHeaderStatus ul li {
+  color: whitesmoke;
+}
+body .applicationHeaderStatus ul li a {
   color: white;
 }
 body .mainContent {

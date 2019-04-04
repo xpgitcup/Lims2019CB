@@ -14,31 +14,28 @@
 </head>
 
 <body>
-<div class="welcomePanel">
-    <div class="title">
-        ${cn.edu.cup.basic.Caption.findByName("main")?.title}
-    </div>
-
-    <form controller="home" action="login" method="post">
-        <div class="welcomeForm">
-            <ul>
-                <li>
-                    <label>用户名</label>
-                    <g:textField name="userName" class="name"/>
-                </li>
-                <li>
-                    <label>密&nbsp;&nbsp;&nbsp;码</label>
-                    <g:field type="password" name="password" class="psw"/>
-                </li>
-            </ul>
-            <ul>
-                <li style="padding-left: 100px">
-                    <button type="submit" class="btn">提交</button>
-                    <button type="reset" class="btn">重置</button>
-                </li>
-            </ul>
-        </div>
-    </form>
+<div class="login_title">
+    ${cn.edu.cup.basic.Caption.findByName("main")?.title}
 </div>
+
+<form controller="home" action="login" method="post">
+    <div class="welcomeForm">
+        <ul>
+            <li>
+                <!--label>用户名</label-->
+                <g:textField name="userName" class="name"/>
+            </li>
+            <li>
+                <!--label>密&nbsp;&nbsp;&nbsp;码</label-->
+                <g:field type="password" name="password" class="psw"/>
+            </li>
+        </ul>
+        <ul>
+            <li>
+                <button type="submit" class="login-button">登录</button>
+            </li>
+        </ul>
+    </div>
+</form>
 </body>
 </html>

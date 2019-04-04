@@ -12,7 +12,6 @@
     <asset:stylesheet src="application.css"/>
 
     <!--引入CUP的相关内容-->
-    <asset:stylesheet src="cup/cup.css"/>
     <asset:stylesheet src="cup/welcome.css"/>
 
     <!-- 界面设置结束 -->
@@ -22,8 +21,10 @@
 
 <body>
 <div class="container">
-    %{--页面正文--}%
-    <g:layoutBody/>
+    <div class="welcomePanel">
+        %{--页面正文--}%
+        <g:layoutBody/>
+    </div>
 </div>
 
 <!--asset:javascript src="application.js"/-->

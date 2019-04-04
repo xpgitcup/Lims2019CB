@@ -1,5 +1,6 @@
 package cn.edu.cup.os
 
+import cn.edu.cup.system.SystemAttribute
 import cn.edu.cup.system.SystemUser
 import grails.gorm.transactions.Transactional
 
@@ -25,7 +26,7 @@ class SystemCommonService {
     }
 
     boolean addPersonToUser(person) {
-        def role = SystemAttribute.findByName("系统操作权限")
+        def role = SystemAttribute.findByName("系统权限")
         switch (person.class.simpleName) {
             case "Teacher":
                 role = SystemAttribute.findByName("教师权限")
