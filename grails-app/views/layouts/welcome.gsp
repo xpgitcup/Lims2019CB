@@ -22,34 +22,6 @@
 
 <body>
 <div class="container">
-
-    %{--导航栏kq--}%
-    <!--div class="navbar navbar-default navbar-static-top" role="navigation"-->
-    <div class="navbar" role="navigation">
-
-        %{--标题--}%
-        <span class="navbar-header">
-            <a href="${createLink(uri: '/')}">
-                <asset:image src="cup/${cn.edu.cup.basic.Caption.findByName("main")?.logo}"
-                             class="img-rounded"/>
-            </a>
-        </span>
-        <span class="applicationTitle">
-            <g:if test="${cn.edu.cup.basic.Caption.findByName("main")?.title}">
-                ${cn.edu.cup.basic.Caption.findByName("main")?.title}
-            </g:if>
-            <g:else>
-                替换成应用程序的标题
-            </g:else>
-        </span>
-
-        <span class="navbar-collapse collapse  navbar-right" aria-expanded="false" style="height: 0.8px;">
-            <ul class="nav navbar-nav">
-                <g:pageProperty name="page.nav"/>
-                %{--每页的nav可以不同--}%
-            </ul>
-        </span>
-    </div>
     %{--页面正文--}%
     <g:layoutBody/>
 </div>

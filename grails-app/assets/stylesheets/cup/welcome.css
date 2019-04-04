@@ -1,7 +1,19 @@
 body {
-  background: url("../cup/login_dangqi.jpg");
+  background: url("../cup/img_bg_haven.jpg");
   background-position: center;
   background-size: cover;
   /*这个是正确的*/
+}
+body .welcomePanel {
+  background: url("../cup/login_001.jpg") no-repeat;
+  background-size: 60%;
+  width: auto;
+  height: 408px;
+  margin: auto;
+  margin-top: 15%;
+  margin-left: auto;
+  padding-top: 10px;
+  border-radius: 6px;
+  border: 1px;
 }
 /*# sourceMappingURL=welcome.css.map */
