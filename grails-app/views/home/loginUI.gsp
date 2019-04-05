@@ -26,7 +26,7 @@
                 <g:textField name="userName" class="name"/>
             </li>
             <li>
-                <label>密&nbsp;&nbsp;&nbsp;码</label>
+                <label>密&nbsp;&nbsp;&nbsp;&nbsp;码</label>
                 <g:field type="password" name="password" class="psw"/>
             </li>
         </ul>

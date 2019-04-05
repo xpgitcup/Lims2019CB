@@ -7,7 +7,8 @@ class OperationSystemInterceptor {
 
     def OperationSystemInterceptor() {
         def m = matchAll().excludes(controller: "home")
-        m.excludes(controller: "systemLog")
+        m.excludes(controller: "systemStatus")
+        m.excludes(controller: "systemStatusItem")
         //m.excludes(controller: "operation4SystemLog")
         def rootURI = "Lims2019CB"
         m.excludes(uri: "/${rootURI}/")  //这一句是关键。发布后显示主页的关键
@@ -20,7 +21,7 @@ class OperationSystemInterceptor {
             println("跳转...")
             redirect(controller: "home", action: "loginUI")
         } else {
-            systemCommonService.updateSystemUserList(request)
+            //systemCommonService.updateSystemUserList(request)
         }
         //继续执行原来的命令
         true
@@ -31,7 +32,7 @@ class OperationSystemInterceptor {
         if (session.systemUser) {
             if (params.size()>0) {
                 println("记录日志...")
-                systemCommonService.recordLog(session, request, params)
+                systemCommonService.updateSystemStatus(request, params)
             }
         }
         true

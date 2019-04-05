@@ -4,33 +4,50 @@ body {
   background-size: cover;
   /*这个是正确的*/
   /*这是最左上角的图标LOG*/
-  /*这是页眉，右侧，状态栏*/
   /*主显示区*/
 }
 body .header-EasyUI {
   background: transparent;
   float: left;
 }
-body .applicationTitle {
+body .applicationHead {
+  display: inline;
+  /*这是页眉，右侧，状态栏*/
+  /* 导航栏 */
+}
+body .applicationHead .applicationTitle {
   display: inline-block;
   vertical-align: text-top;
   padding-top: 20px;
   font-size: 2.1em;
   color: white;
 }
-body .applicationHeaderStatus {
+body .applicationHead .applicationHeaderStatus {
   float: right;
   padding-right: 10px;
   padding-top: 20px;
 }
-body .applicationHeaderStatus ul {
+body .applicationHead .applicationHeaderStatus ul {
   list-style-type: none;
 }
-body .applicationHeaderStatus ul li {
+body .applicationHead .applicationHeaderStatus ul li {
   color: whitesmoke;
 }
-body .applicationHeaderStatus ul li a {
+body .applicationHead .applicationHeaderStatus ul li a {
   color: white;
+}
+body .applicationHead .applicationNav {
+  color: white;
+  float: right;
+}
+body .applicationHead .applicationNav ul {
+  list-style-type: none;
+}
+body .applicationHead .applicationNav ul li {
+  display: block;
+  float: right;
+  margin-right: 0.5em;
+  padding: 10px;
 }
 body .mainContent {
   background: transparent;

@@ -28,6 +28,9 @@
         <ul>
             <li></li>
             <li style="padding-left: 100px">
+                <a href="${createLink(uri: '/')}">返回</a>
+            </li>
+            <li style="padding-left: 100px">
                 <a href="${createLink(uri: '/home/loginUI')}">再次登录</a>
             </li>
         </ul>

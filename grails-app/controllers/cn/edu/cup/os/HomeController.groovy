@@ -1,8 +1,24 @@
 package cn.edu.cup.os
 
+import cn.edu.cup.system.SystemStatus
 import cn.edu.cup.system.SystemUser
+import grails.converters.JSON
 
 class HomeController {
+
+    def systemCommonService
+
+    def countOnlineUsers() {
+        def current = new Date()
+        def start = current.getTime() - 10 * 60 * 1000
+        def cc = SystemStatus.countByLogoutTimeIsNullAndLoginTimeGreaterThan(start)
+        def result = [count: cc]
+        if (request.xhr) {
+            render(template: "onlineCount", model: result)
+        } else {
+            result
+        }
+    }
 
     def index() {}
 
@@ -13,6 +29,7 @@ class HomeController {
     def logout() {
         def pscontext = request.session.servletContext
         Map serviceMap = pscontext.getAttribute("systemUserList")
+        systemCommonService.updateSystemStatus(request, params)
         if (session.systemUser) {
             serviceMap.remove(session.systemUser.userName)
             println("${session.systemUser.userName}退出...")
@@ -39,6 +56,7 @@ class HomeController {
         if (systemUser) {
             //println("找到了：${systemUser}")
             session.systemUser = systemUser
+            systemCommonService.updateSystemStatus(request, params)
             redirect(uri: "/home")
         } else {
             flash.message = "用户名或密码错误！"

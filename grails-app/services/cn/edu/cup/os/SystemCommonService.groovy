@@ -1,6 +1,8 @@
 package cn.edu.cup.os
 
 import cn.edu.cup.system.SystemAttribute
+import cn.edu.cup.system.SystemStatus
+import cn.edu.cup.system.SystemStatusItem
 import cn.edu.cup.system.SystemUser
 import grails.gorm.transactions.Transactional
 
@@ -8,11 +10,31 @@ import grails.gorm.transactions.Transactional
 class SystemCommonService {
 
     def systemUserService
-    def grailsApplication
+    def systemStatusService
 
-    def getRealName(SystemUser systemUser) {
-        def user = Person.findByCode(systemUser.userName)
-        return user
+    def updateSystemStatus(request, params) {
+        def ps = params
+        ps.remove('password')
+        def sid = request.session.getId()
+        def ss = SystemStatus.findBySessionId(sid)
+        if (ss) {
+            if (ps.action == "logout") {
+                ss.logoutTime = new Date()
+            }
+        } else {
+            def user = request.session.systemUser
+            ss = new SystemStatus(
+                    sessionId: sid,
+                    userName: user.personName(),
+                    userRole: user.userRoles()
+            )
+        }
+        def item = new SystemStatusItem(paramsString: com.alibaba.fastjson.JSON.toJSONString(ps), systemStatus: ss)
+        if (!ss.items) {
+            ss.items = []
+        }
+        ss.items.add(item)
+        systemStatusService.save(ss)
     }
 
     boolean removePersonFromUser(person) {
@@ -74,7 +96,7 @@ class SystemCommonService {
             request.session.systemUserList = users
             //统计人数
             request.session.onlineCount = serviceMap.size()
-            //println("${users}")
+            println("${users}")
         }
     }
 

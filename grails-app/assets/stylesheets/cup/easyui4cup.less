@@ -11,34 +11,59 @@ body {
         float: left;
     }
 
-    //标题字体
-    .applicationTitle {
-        display: inline-block;
-        vertical-align: text-top;
-        padding-top: 20px;
-        font-size: 2.1em;
-        color: white;
-    }
+    .applicationHead {
 
-    /*这是页眉，右侧，状态栏*/
+        display: inline;
 
-    .applicationHeaderStatus {
-        float: right;
-        padding-right: 10px;
-        padding-top: 20px;
+        //标题字体
+        .applicationTitle {
+            display: inline-block;
+            vertical-align: text-top;
+            padding-top: 20px;
+            font-size: 2.1em;
+            color: white;
+        }
 
-        ul {
-            list-style-type: none;
+        /*这是页眉，右侧，状态栏*/
 
-            li {
-                color: whitesmoke;
+        .applicationHeaderStatus {
+            float: right;
+            padding-right: 10px;
+            padding-top: 20px;
 
-                a {
-                    color: white;
+            ul {
+                list-style-type: none;
+
+                li {
+                    color: whitesmoke;
+
+                    a {
+                        color: white;
+                    }
                 }
             }
         }
+
+        /* 导航栏 */
+
+        .applicationNav {
+            color: white;
+            float: right;
+
+            ul {
+                list-style-type: none;
+
+                li {
+                    display: block;
+                    float: right;
+                    margin-right: 0.5em;
+                    padding: 10px;
+                }
+            }
+        }
+
     }
+
 
     /*主显示区*/
 

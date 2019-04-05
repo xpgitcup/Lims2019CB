@@ -14,5 +14,11 @@
 
 <body>
 
+<div class="mainContent">
+    <div align="center">
+        <asset:image src="cup/${cn.edu.cup.basic.Caption.findByName("main详细介绍")?.logo}"/>
+    </div>
+</div>
+
 </body>
 </html>

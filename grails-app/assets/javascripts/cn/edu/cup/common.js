@@ -115,7 +115,7 @@ function ajaxRun(url, id, divId) {
             data: {id: id},
             success: function (data, textStatus) {
                 $('#' + divId).html(data);
-                //console.info(data);   //调试用的
+                console.info(data);   //调试用的
             },
             error: function (XMLHttpRequest, textStatus, errorThrown) {
                 console.info(XMLHttpRequest);
