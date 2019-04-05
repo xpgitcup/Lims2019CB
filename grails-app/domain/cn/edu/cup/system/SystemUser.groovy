@@ -1,5 +1,7 @@
 package cn.edu.cup.system
 
+import cn.edu.cup.basic.Person
+
 class SystemUser {
     
     String  userName
@@ -44,5 +46,14 @@ class SystemUser {
     def hasRole (roleName) {
         def roles = userRoles()
         return roles.contains(roleName)
+    }
+
+    def personName() {
+        def p = Person.findByCode(userName)
+        if (p) {
+            return p.name
+        } else {
+            return "佚名"
+        }
     }
 }

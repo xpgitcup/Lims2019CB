@@ -6,7 +6,6 @@ class HomeController {
 
     def index() {}
 
-
     /*
     * 登录
     * */
