@@ -12,7 +12,7 @@ body .welcomePanel {
   height: 408px;
   margin: auto;
   margin-top: 20%;
-  border: 1px;
+  border: 0px;
 }
 body .welcomePanel .login_title {
   padding-left: 120px;
@@ -21,16 +21,17 @@ body .welcomePanel .login_title {
   width: 800px;
 }
 body .welcomePanel .welcomeForm {
-  padding-top: 62px;
+  padding-top: 80px;
   padding-left: 145px;
 }
 body .welcomePanel .welcomeForm ul {
   list-style: none;
+  font-size: 1.5em;
 }
 body .welcomePanel .welcomeForm ul li {
-  padding: 12px;
+  padding: 6px;
 }
 body .welcomePanel .welcomeForm .login-button {
-  width: 100px;
+  width: 60px;
 }
 /*# sourceMappingURL=welcome.css.map */

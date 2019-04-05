@@ -7,6 +7,28 @@ class HomeController {
     def index() {}
 
     /*
+    * 退出登录
+    * */
+
+    def logout() {
+        def pscontext = request.session.servletContext
+        Map serviceMap = pscontext.getAttribute("systemUserList")
+        if (session.systemUser) {
+            serviceMap.remove(session.systemUser.userName)
+            println("${session.systemUser.userName}退出...")
+            session.onlineCount = serviceMap.size()
+            def logoutUser = session.systemUser.personName()
+            session.invalidate()
+            //redirect(uri: "/")
+            println("拜拜...${logoutUser}")
+            model:
+            [logoutUser: logoutUser]
+        } else {
+            redirect(uri: "${createLink(uri: '/')}")
+        }
+    }
+
+    /*
     * 登录
     * */
 

@@ -26,6 +26,7 @@
     <asset:javascript src="easyui/jquery.easyui.min.js"/>
 
     <!-- 开始中国石油大学（北京）的设置 -->
+    <!-- 界面的设置 -->
     <asset:stylesheet src="cup/easyui4cup.css"/>
     <!-- 中国石油大学（北京）的设置结束 -->
 
@@ -58,6 +59,7 @@
             <!-- 显示当前用户 -->
                 <g:if test="${session.systemUser}">
                     <li>当前用户：${session.systemUser.personName()}</li>
+                    <li><a href="${createLink(uri: '/home/logout')}">退出</a></li>
                 </g:if>
                 <g:else>
                     <li><a href="${createLink(uri: '/home/loginUI')}">去登录</a></li>
@@ -85,9 +87,6 @@
                     </li>
                     <li>
                         在线:${session?.onlineCount}人:
-                    </li>
-                    <li>
-                        当前用户：
                     </li>
                 </ul>
             </div>
