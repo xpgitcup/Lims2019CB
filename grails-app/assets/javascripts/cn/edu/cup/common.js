@@ -103,6 +103,27 @@ function ajaxCalculate(url) {
 
 
 /*
+ * 通用ajax函数，统计某个数值
+ * */
+function ajaxRun4Json(url, jsFunction) {
+    $.ajax({
+        type: 'POST',
+        url: url,
+        async: false,
+        success: function (data, textStatus) {
+            var jsFunc = eval(jsFunction)
+            jsFunc(data);
+        },
+        error: function (XMLHttpRequest, textStatus, errorThrown) {
+            console.info(XMLHttpRequest);
+            console.info(textStatus);
+            console.info(errorThrown);
+        }
+    });
+}
+
+
+/*
  * 通用的ajax执行函数
  * */
 function ajaxRun(url, id, divId) {

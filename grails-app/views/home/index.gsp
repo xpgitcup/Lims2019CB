@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <meta name="layout" content="mainCup"/>
+    <meta name="layout" content="mainCupEasyUI"/>
     <title>Home</title>
 </head>
 

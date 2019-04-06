@@ -10,7 +10,7 @@ class HomeController {
 
     def countOnlineUsers() {
         def current = new Date()
-        def start = current.getTime() - 10 * 60 * 1000
+        Date start = new Date(current.getTime() - 30 * 60 * 1000) // 30分钟转换成毫秒
         def cc = SystemStatus.countByLogoutTimeIsNullAndLoginTimeGreaterThan(start)
         def result = [count: cc]
         if (request.xhr) {
