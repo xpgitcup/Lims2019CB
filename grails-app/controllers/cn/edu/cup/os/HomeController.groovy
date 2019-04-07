@@ -12,7 +12,16 @@ class HomeController {
         def current = new Date()
         Date start = new Date(current.getTime() - 30 * 60 * 1000) // 30分钟转换成毫秒
         def cc = SystemStatus.countByLogoutTimeIsNullAndLoginTimeGreaterThan(start)
-        def result = [count: cc]
+        def users = SystemStatus.findAllByLogoutTimeIsNullAndLoginTimeGreaterThan(start)
+        def usersStr = ""
+        if (users.size()<3) {
+            users.each { e->
+                usersStr += "${e.userName},"
+            }
+        } else {
+            usersStr = "${users[0].userName},${users[0].userName},${users[0].userName}..."
+        }
+        def result = [count: cc, usersStr:usersStr]
         if (request.xhr) {
             render(template: "onlineCount", model: result)
         } else {
