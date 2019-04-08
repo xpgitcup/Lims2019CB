@@ -63,7 +63,6 @@ class HomeController {
         systemCommonService.updateSystemStatus(request, params)
         if (session.systemUser) {
             println("${session.systemUser.userName}退出...")
-            session.onlineCount = serviceMap.size()
             def logoutUser = session.systemUser.personName()
             session.invalidate()
             //redirect(uri: "/")
