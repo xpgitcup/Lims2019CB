@@ -7,6 +7,7 @@ class Caption {
     String title
     String description
     String href
+    String layout
 
     static constraints = {
         name(unique: true)
@@ -14,6 +15,7 @@ class Caption {
         title()
         description(nullable: true)
         href(nullable: true)
+        layout(nullable: true)
     }
 
     String toString() {

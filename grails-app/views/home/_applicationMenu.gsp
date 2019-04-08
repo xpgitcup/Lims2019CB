@@ -1,7 +1,7 @@
 <div>
     <ul>
         <g:if test="${currentMenuItem}">
-            <li><a href="home/selectCurrentMenuItem?currentMenuItem=${currentMenuItem?.upMenuItem?.id}">返回上级</a></li>
+            <li><a href="home/selectCurrentMenuItem?currentMenuItem=${currentMenuItem?.upMenuItem?.id}" style="color: yellow">返回上级</a></li>
         </g:if>
         <g:each in="${systemMenuList}" var="item" status="i">
             <li>

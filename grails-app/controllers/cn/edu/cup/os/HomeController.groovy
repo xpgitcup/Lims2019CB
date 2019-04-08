@@ -1,5 +1,6 @@
 package cn.edu.cup.os
 
+import cn.edu.cup.basic.Caption
 import cn.edu.cup.system.SystemMenu
 import cn.edu.cup.system.SystemStatus
 import cn.edu.cup.system.SystemUser
@@ -108,6 +109,7 @@ class HomeController {
         def systemUser = SystemUser.findByUserNameAndPassword(userName, p)
         if (systemUser) {
             //println("找到了：${systemUser}")
+            session.layout = Caption.findByName("main").layout
             session.systemUser = systemUser
             systemCommonService.updateSystemStatus(request, params)
             redirect(uri: "/home")
