@@ -63,13 +63,22 @@
             </div>
         </div>
 
-        <div class="col-md-7 column">这里应该是菜单</div>
+        <div class="col-md-7 column">
+            <g:if test="${session.systemUser}">
+                <div id="applicationMenuDiv" class="application-menus"></div>
+            </g:if>
+            <g:else>
+                <div class="application-message">
+                    请先登录！
+                </div>
+            </g:else>
+        </div>
 
         <div class="col-md-1 column">
             <ul class="application-status">
                 <g:if test="${session.systemUser}">
                     <li>
-                        当前用户：${session.systemUser.personName()}
+                        当前：${session.systemUser.personName()}
                     </li>
                     <li>
                         <a href="${createLink(uri: '/home/logout')}">退出</a>

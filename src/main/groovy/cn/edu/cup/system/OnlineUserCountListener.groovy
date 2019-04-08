@@ -11,6 +11,9 @@ import java.util.Map;
 
 @WebListener
 public class OnlineUserCountListener implements HttpSessionListener {
+
+    def systemStatusService
+
     @Override
     public void sessionCreated(HttpSessionEvent se) {
         Date now = new Date();
@@ -18,13 +21,20 @@ public class OnlineUserCountListener implements HttpSessionListener {
         //创建唯一的用户登记表
         HttpSession s = se.getSession();
         if (s != null) {
-            ServletContext ctx = s.getServletContext();
-            if (ctx != null) {
-                Map serviceMap = (Map) ctx.getAttribute("systemUserList");
-                if (serviceMap == null) {
-                    ctx.setAttribute("systemUserList", new HashMap());
-                }
+            def ss = new SystemStatus(
+                    sessionId: s.getId(),
+                    loginTime: now
+            )
+            def item = new SystemStatusItem(
+                    actionTime: now,
+                    paramsString: "创建会话",
+                    systemStatus: ss
+            )
+            if (!ss.items) {
+                ss.items = []
             }
+            ss.items.add(item)
+            ss.save()
         }
     }
 
@@ -33,18 +43,20 @@ public class OnlineUserCountListener implements HttpSessionListener {
         HttpSession s = se.getSession();
         Date now = new Date()
         println("${s} 会话撤销 at ${now.toString()}...")
-        ServletContext ctx = s.getServletContext();
-        if (ctx != null) {
-            Map serviceMap = (Map) ctx.getAttribute("systemUserList");
-            if (serviceMap != null) {
-                SystemUser user = (SystemUser) s.getAttribute("systemUser");
-                if (user != null) {
-                    serviceMap.remove(user.userName);
-                    String userName = user.getUserName();
-                    System.out.printf("remove %s.\n", userName);
-                }
+        def ss = SystemStatus.findBySessionId(s.getId())    // 会话撤销，这一句已经不能执行了！！
+        if (ss) {
+            ss.logoutTime = now
+            def item = new SystemStatusItem(
+                    actionTime: now,
+                    paramsString: "超时退出",
+                    systemStatus: ss
+            )
+            if (!ss.items) {
+                ss.items = []
             }
+            ss.items.add(item)
+            systemStatusService.save(ss)
         }
-
     }
+
 }

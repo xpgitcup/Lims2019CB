@@ -10,6 +10,13 @@ body .application-title {
   text-align: center;
   line-height: 78px;
 }
+body .application-menus {
+  color: white;
+}
+body .application-message {
+  color: yellow;
+  line-height: 78px;
+}
 body .application-status {
   color: white;
   list-style: none;

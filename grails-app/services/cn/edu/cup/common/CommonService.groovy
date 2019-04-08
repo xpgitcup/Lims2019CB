@@ -7,6 +7,40 @@ class CommonService {
 
     def grailsApplication
     def webRootPath = ""        // 公用的变量---赋值是在BootStrap中
+    /*
+    从json文件中导入对象，文件如果不存在，创建文件
+    * */
+
+    def importObjectFromJsonFileName(String jsonFileName, Class clazz) {
+        def jsonFile = new File(jsonFileName)
+        return importObjectFromJsonFile(jsonFile, clazz)
+    }
+
+    /*
+    从json文件中导入对象列表，文件如果不存在，创建文件
+    * */
+
+    def importObjectFromJsonFile(File jsonFile, Class clazz) {
+        if (jsonFile.exists()) {
+            def jsonString = jsonFile.text
+            return importObjectFromJson(jsonString, clazz)
+        } else {
+            def printWriter = new PrintWriter(jsonFile, "utf-8")
+            def string = com.alibaba.fastjson.JSON.toJSONString(clazz.newInstance())
+            printWriter.write(string)
+            printWriter.close()
+            return null
+        }
+    }
+
+    /*
+    * 从json字符串中导入对象列表
+    * */
+
+    def importObjectFromJson(String jsonString, Class clazz) {
+        def object = com.alibaba.fastjson.JSON.parseObject(jsonString, clazz)
+        return object
+    }
 
     /*
     从json文件中导入对象列表，文件如果不存在，创建文件

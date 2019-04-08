@@ -42,7 +42,7 @@ class InitService {
         // 先处理数据库脚本文件
         def configFileName = "${webRootDir}/config/scriptList.json"
         def scriptList = [:]
-        scriptList = commonService.importObjectListFromJsonFileName(configFileName, scriptList.getClass())
+        scriptList = commonService.importObjectFromJsonFileName(configFileName, scriptList.getClass())
         println("处理脚本：${scriptList}")
         scriptList.each { e ->
             switch (e.key) {

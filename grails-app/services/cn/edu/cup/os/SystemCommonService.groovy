@@ -29,6 +29,14 @@ class SystemCommonService {
                     userRole: user.userRoles()
             )
         }
+        // 更新参数
+        def status = ss.getParameters()
+        if (!status) {
+            status = [:]
+        }
+        status.putAll(params)
+        ss.statusParameters = com.alibaba.fastjson.JSON.toJSONString(status)
+        // 记录详情
         def item = new SystemStatusItem(paramsString: com.alibaba.fastjson.JSON.toJSONString(ps), systemStatus: ss)
         if (!ss.items) {
             ss.items = []

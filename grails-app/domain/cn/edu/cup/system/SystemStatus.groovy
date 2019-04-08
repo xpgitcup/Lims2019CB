@@ -7,6 +7,7 @@ class SystemStatus {
     Date logoutTime
     String userName
     String userRole
+    String statusParameters
 
     static hasMany = [items: SystemStatusItem]
 
@@ -16,9 +17,17 @@ class SystemStatus {
         logoutTime(nullable: true)
         userName(nullable: true)
         userRole(nullable: true)
+        statusParameters(nullable: true)
     }
 
     String toString() {
         return "${sessionId}.${items?.size()}"
     }
+
+    def getParameters() {
+        def parameters = [:]
+        parameters = com.alibaba.fastjson.JSON.parseObject(statusParameters)
+        return parameters
+    }
+
 }

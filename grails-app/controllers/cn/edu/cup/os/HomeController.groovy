@@ -1,5 +1,6 @@
 package cn.edu.cup.os
 
+import cn.edu.cup.system.SystemMenu
 import cn.edu.cup.system.SystemStatus
 import cn.edu.cup.system.SystemUser
 import grails.converters.JSON
@@ -7,6 +8,28 @@ import grails.converters.JSON
 class HomeController {
 
     def systemCommonService
+
+    def getMenuItems() {
+        def q = SystemMenu.createCriteria()
+        def user = session.systemUser
+        println("当前用户：${user}")
+        def systemMenuList = []
+        if (user) {
+            def roles = user.userRoles()
+            println("当前权限：${roles}")
+            systemMenuList = q.list(params) {
+                isNull('upMenuItem')
+                'in'('menuContext', roles)      // 只要菜单的名字在其中就可以 20181208
+                order('menuOrder')
+            }
+        }
+        def result = [systemMenuList:systemMenuList]
+        if (request.xhr) {
+            render(template: "applicationMenu", model: result)
+        } else {
+            result
+        }
+    }
 
     def countOnlineUsers() {
         def current = new Date()
@@ -37,10 +60,8 @@ class HomeController {
 
     def logout() {
         def pscontext = request.session.servletContext
-        Map serviceMap = pscontext.getAttribute("systemUserList")
         systemCommonService.updateSystemStatus(request, params)
         if (session.systemUser) {
-            serviceMap.remove(session.systemUser.userName)
             println("${session.systemUser.userName}退出...")
             session.onlineCount = serviceMap.size()
             def logoutUser = session.systemUser.personName()
