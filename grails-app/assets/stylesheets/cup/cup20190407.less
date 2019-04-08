@@ -12,7 +12,21 @@ body {
   }
 
   .application-menus {
-    color: white;
+    text-align: center;
+    line-height: 78px; // 设置成图片的高度，确保垂直居中
+
+    ul {
+      list-style: none;
+
+      li {
+        float: right;
+        padding: 10px;
+
+        a {
+          color: white;
+        }
+      }
+    }
   }
 
   .application-message {
@@ -24,6 +38,9 @@ body {
     color: white;
     list-style: none;
     padding-top: 10%;
+    a {
+      color: #00bbee;
+    }
   }
 
   .application-footer {

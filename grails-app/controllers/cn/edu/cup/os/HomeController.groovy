@@ -8,22 +8,46 @@ import grails.converters.JSON
 class HomeController {
 
     def systemCommonService
+    def systemMenuService
+
+    def selectCurrentMenuItem() {
+        println("${params}")
+        systemCommonService.updateSystemStatus(request, params)
+        redirect(action: "index")
+    }
 
     def getMenuItems() {
-        def q = SystemMenu.createCriteria()
-        def user = session.systemUser
-        println("当前用户：${user}")
         def systemMenuList = []
-        if (user) {
-            def roles = user.userRoles()
-            println("当前权限：${roles}")
-            systemMenuList = q.list(params) {
-                isNull('upMenuItem')
-                'in'('menuContext', roles)      // 只要菜单的名字在其中就可以 20181208
-                order('menuOrder')
+        def menuPath = []
+        def currentMenuItem = null
+        def sid = session.getId()
+        def ss = SystemStatus.findBySessionId(sid)
+        if (ss) {
+            println("参数：${ss.statusParameters}")
+            def ps = com.alibaba.fastjson.JSON.parseObject(ss.statusParameters)
+            currentMenuItem = systemMenuService.get(ps.currentMenuItem)
+            println("当前菜单：${currentMenuItem}")
+            if (currentMenuItem) {
+                println("当前：${currentMenuItem}")
+                menuPath = currentMenuItem.menuPath()
+                systemMenuList = currentMenuItem.menuItems
+            } else {
+                def q = SystemMenu.createCriteria()
+                def user = session.systemUser
+                println("当前用户：${user}")
+                if (user) {
+                    def roles = user.userRoles()
+                    println("当前权限：${roles}")
+                    systemMenuList = q.list(params) {
+                        isNull('upMenuItem')
+                        'in'('menuContext', roles)      // 只要菜单的名字在其中就可以 20181208
+                        order('menuOrder')
+                    }
+                }
             }
+        } else {
         }
-        def result = [systemMenuList:systemMenuList]
+        def result = [systemMenuList: systemMenuList, meunPath: menuPath, currentMenuItem: currentMenuItem]
         if (request.xhr) {
             render(template: "applicationMenu", model: result)
         } else {
@@ -37,14 +61,14 @@ class HomeController {
         def cc = SystemStatus.countByLogoutTimeIsNullAndLoginTimeGreaterThan(start)
         def users = SystemStatus.findAllByLogoutTimeIsNullAndLoginTimeGreaterThan(start)
         def usersStr = ""
-        if (users.size()<3) {
-            users.each { e->
+        if (users.size() < 3) {
+            users.each { e ->
                 usersStr += "${e.userName},"
             }
         } else {
             usersStr = "${users[0].userName},${users[0].userName},${users[0].userName}..."
         }
-        def result = [count: cc, usersStr:usersStr]
+        def result = [count: cc, usersStr: usersStr]
         if (request.xhr) {
             render(template: "onlineCount", model: result)
         } else {

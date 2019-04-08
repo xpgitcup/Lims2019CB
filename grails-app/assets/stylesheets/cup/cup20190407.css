@@ -11,6 +11,17 @@ body .application-title {
   line-height: 78px;
 }
 body .application-menus {
+  text-align: center;
+  line-height: 78px;
+}
+body .application-menus ul {
+  list-style: none;
+}
+body .application-menus ul li {
+  float: right;
+  padding: 10px;
+}
+body .application-menus ul li a {
   color: white;
 }
 body .application-message {
@@ -21,6 +32,9 @@ body .application-status {
   color: white;
   list-style: none;
   padding-top: 10%;
+}
+body .application-status a {
+  color: #00bbee;
 }
 body .application-footer {
   color: white;

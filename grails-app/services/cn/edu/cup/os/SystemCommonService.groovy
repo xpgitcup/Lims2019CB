@@ -35,6 +35,7 @@ class SystemCommonService {
             status = [:]
         }
         status.putAll(params)
+        println("${status}")
         ss.statusParameters = com.alibaba.fastjson.JSON.toJSONString(status)
         // 记录详情
         def item = new SystemStatusItem(paramsString: com.alibaba.fastjson.JSON.toJSONString(ps), systemStatus: ss)

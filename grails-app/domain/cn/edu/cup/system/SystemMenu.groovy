@@ -6,7 +6,7 @@ class SystemMenu {
     String menuAction
     String menuDescription
     SystemMenu upMenuItem
-    String  roleAttribute
+    String roleAttribute
     String layout
     int menuOrder = 0
 
@@ -36,6 +36,18 @@ class SystemMenu {
     }
 
     //------------------------------------------------------------------------------------------------------------------
+    def menuPath() {
+        def ps = []
+        ps.add(this)
+        def up = this.upMenuItem
+        while (up) {
+            ps.add(up)
+            up = up.upMenuItem
+        }
+        def pps = ps.reverse()
+        return pps
+    }
+
     String hrefContext() {
         //return "<a href=\'/${menuAction}\'>${menuContext}</a>"      //这是绝对路径
         return "<a href=\'${menuAction}\'>${menuContext}</a>"      //这是相对路径
@@ -43,9 +55,9 @@ class SystemMenu {
 
     String menuItemRole() {
         def role = roleAttribute
-        if ((role==null) && (this.upMenuItem!=null)) {
+        if ((role == null) && (this.upMenuItem != null)) {
             def parentMenu = this.upMenuItem
-            while ((role==null) && (parentMenu != null)) {
+            while ((role == null) && (parentMenu != null)) {
                 role = parentMenu.roleAttribute
                 parentMenu = parentMenu.upMenuItem
             }
