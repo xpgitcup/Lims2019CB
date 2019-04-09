@@ -10,6 +10,7 @@ class HomeController {
 
     def systemCommonService
     def systemMenuService
+    def initService
 
     def selectCurrentMenuItem() {
         println("${params}")
@@ -77,7 +78,19 @@ class HomeController {
         }
     }
 
-    def index() {}
+    def index() {
+        def controllers = initService.checkSystemStatus()
+        def fc = 0
+        controllers.each { e ->
+            //println("${e.key}--")
+            if (e.value) {
+                fc++
+            }
+        }
+        def pfc = Math.round(fc / controllers.size() * 100 * 100) / 100
+        model:
+        [controllers: controllers, pfc: pfc]
+    }
 
     /*
     * 退出登录

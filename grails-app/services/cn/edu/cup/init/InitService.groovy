@@ -30,6 +30,31 @@ class InitService {
         println "这是开发环境..."
         println(grailsApplication.metadata.getApplicationName())
         processConfigFile(servletContext)
+        checkSystemStatus()
+    }
+
+    def checkSystemStatus() {
+        def domains = []
+        grailsApplication.controllerClasses.each { e ->
+            domains.add(e.name)
+        }
+        println("域类：${domains}")
+        def controllers = [:]
+        SystemMenu.list().each { e ->
+            def item = [:]
+            if (e.menuAction != "#") {
+                def ee = e.menuAction.split("/")
+                def ename = ee[0]
+                def firstChar = ename.charAt(0).toUpperCase()
+                def cname = "${firstChar}${ename.substring(1)}"
+                println(cname)
+                def ok = domains.findIndexOf { it == cname }
+                println("${cname} ${ok}")
+                controllers.put(cname, (ok > -1))
+            }
+        }
+        println("系统状态 ${controllers}")
+        return controllers
     }
 
     /*
